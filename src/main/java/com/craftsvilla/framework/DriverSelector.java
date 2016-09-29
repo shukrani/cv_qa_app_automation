@@ -1,5 +1,6 @@
 package com.craftsvilla.framework;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -13,12 +14,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.craftsvilla.dataobjects.EnvironmentBo;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+
 public class DriverSelector {
 	static PropertyReader configReader = new PropertyReader();
+	static AndroidDriver driver = null;
+	private static AppiumDriverLocalService service;
 
 	public static WebDriver getDriver() {
 		WebDriver driver = null;
-		//	DesiredCapabilities capability = null;
+		// DesiredCapabilities capability = null;
 
 		String browser = configReader.getPropertyValue("browser");
 
@@ -126,4 +132,36 @@ public class DriverSelector {
 
 	}
 
+	public static AndroidDriver getAndroidDriver() {
+
+		if (driver != null)
+			return driver;
+
+		service = AppiumDriverLocalService.buildDefaultService();
+		service.start();
+
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		capabilities.setCapability("app", new File("src/main/resources/Input/cv.apk").getAbsolutePath());
+
+		capabilities.setCapability("deviceName", "any_id");// to get
+															// device id
+															// see $adb
+															// devices
+
+		try {
+			driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+			return driver;
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+			return driver;
+		}
+
+	}
+
+	public static void stopAppium() {
+		service.start();
+	}
 }

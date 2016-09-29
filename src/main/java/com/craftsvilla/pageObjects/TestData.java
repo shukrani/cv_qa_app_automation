@@ -35,5 +35,7 @@ public class TestData {
 	static public String successMessage_fogotPassword = testData.getTestData("successMessage_fogotPassword");
 	static public String errorMessage_forgotPassword = testData.getTestData("errorMessage_forgotPassword");
 	static public String button_searchText = testData.getTestData("Text-to-search");
+	static public String loginEmail = testData.getTestData("loginEmail");
+	static public String loginPass = testData.getTestData("loginPass");
 
 }

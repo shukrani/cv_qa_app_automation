@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.craftsvilla.exceptions.UIElementNotFound;
 
+import io.appium.java_client.android.AndroidDriver;
+
 public class DriverActions {
 	static UIElement elements = new UIElement();
 	static WebDriverWait wait;
@@ -71,7 +73,7 @@ public class DriverActions {
 
 			}
 			if (by.equals("id")) {
-				Wait.defaultsmallWait(driver);
+				Wait.waitForElement(driver, By.id(locator), 60);
 				driver.findElement(By.id(locator)).click();
 				driver.findElement(By.id(locator)).clear();
 				driver.findElement(By.id(locator)).sendKeys(text);
@@ -120,38 +122,41 @@ public class DriverActions {
 	}
 
 	public static boolean isElementDisplay(WebDriver driver, String elementName) {
-		String by = elements.getbyName(elementName);
-		String locator = elements.getlocatorName(elementName);
-		boolean result = false;
-		if (by != null && locator != null) {
-			if (by.equals("xpath")) {
-				try {
 
-					Wait.defaultsmallWait(driver);
+		try {
+			String by = elements.getbyName(elementName);
+			String locator = elements.getlocatorName(elementName);
+			boolean result = false;
+			if (by != null && locator != null) {
+				if (by.equals("xpath")) {
+
+					Wait.waitForElement(driver, By.xpath(locator), 30);
 					result = driver.findElement(By.xpath(locator)).isDisplayed();
-				} catch (NoSuchElementException ignored) {
-					return false;
+
+				}
+				if (by.equals("id")) {
+					Wait.waitForElement(driver, By.id(locator), 30);
+					result = driver.findElement(By.id(locator)).isDisplayed();
+				}
+				if (by.equals("class")) {
+					Wait.waitForElement(driver, By.className(locator), 30);
+					result = driver.findElement(By.className(locator)).isDisplayed();
+				}
+			} else
+
+			{
+				try {
+					throw new UIElementNotFound("ElementName/Locator Not Found in UI element sheet" + elementName);
+				} catch (UIElementNotFound e) {
+
+					e.printStackTrace();
 				}
 			}
-			if (by.equals("id")) {
-				Wait.defaultsmallWait(driver);
-				result = driver.findElement(By.id(locator)).isDisplayed();
-			}
-			if (by.equals("class")) {
-				Wait.defaultsmallWait(driver);
-				result = driver.findElement(By.className(locator)).isDisplayed();
-			}
-		} else
+			return result;
 
-		{
-			try {
-				throw new UIElementNotFound("ElementName/Locator Not Found in UI element sheet" + elementName);
-			} catch (UIElementNotFound e) {
-
-				e.printStackTrace();
-			}
+		} catch (NoSuchElementException ignored) {
+			return false;
 		}
-		return result;
 
 	}
 
@@ -377,6 +382,15 @@ public class DriverActions {
 			return element;
 		}
 		return element;
+	}
+
+	public static void hideKeyBoard(AndroidDriver driver) {
+
+		try {
+			driver.hideKeyboard();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -6,29 +6,23 @@ import org.openqa.selenium.WebDriver;
 import com.craftsvilla.framework.DriverActions;
 import com.craftsvilla.framework.PropertyReader;
 import com.craftsvilla.framework.Wait;
-import com.craftsvilla.pageObjects.HomePage;
 
 public class AddToCart {
-	static LoginFlow login = new LoginFlow();
+
 	static PropertyReader read = new PropertyReader();
 
 	public static void addFirstProductToCart(WebDriver driver) {
 
-		login.loginflow(driver);
 		Wait.defaultHighWait(driver);
 		driver.get(read.getPropertyValue("url") + "/catalog/product/view/id/4331545/s/self-red");
-		//http://www.craftsvilla.com/catalog/product/view/id/4331545/s/test
-		/*HomePage.clickOnFistCategory(driver);
+		// http://www.craftsvilla.com/catalog/product/view/id/4331545/s/test
+		/*
+		 * HomePage.clickOnFistCategory(driver); Wait.defaultHighWait(driver);
+		 * Wait.defaultHighWait(driver); HomePage.checkOnlyCODProduct(driver);
+		 * Wait.defaultMediumWait(driver); Wait.defaultHighWait(driver);
+		 * HomePage.clickOnFirstProduct(driver); Wait.defaultMediumWait(driver);
+		 */
 		Wait.defaultHighWait(driver);
-		Wait.defaultHighWait(driver);
-		HomePage.checkOnlyCODProduct(driver);
-		Wait.defaultMediumWait(driver);
-		Wait.defaultHighWait(driver);
-		HomePage.clickOnFirstProduct(driver);
-		Wait.defaultMediumWait(driver);
-		*/
-		Wait.defaultHighWait(driver);
-		HomePage.clickOnBuyNowButton(driver);
 
 	}
 
@@ -47,18 +41,19 @@ public class AddToCart {
 		} else {
 			driver.get(read.getPropertyValue("url") + "/catalog/product/view/id/4331545/s/self-red");
 		}
-		/*HomePage.clic	kOnFistCategory(driver);
+		/*
+		 * HomePage.clic kOnFistCategory(driver); Wait.defaultHighWait(driver);
+		 * Wait.defaultHighWait(driver); HomePage.checkOnlyCODProduct(driver);
+		 * Wait.defaultHighWait(driver); Wait.defaultHighWait(driver);
+		 * HomePage.clickOnFirstProduct(driver);
+		 */
 		Wait.defaultHighWait(driver);
 		Wait.defaultHighWait(driver);
-		HomePage.checkOnlyCODProduct(driver);
-		Wait.defaultHighWait(driver);
-		Wait.defaultHighWait(driver);
-		HomePage.clickOnFirstProduct(driver);*/
-		Wait.defaultHighWait(driver);
-		Wait.defaultHighWait(driver);
-		HomePage.clickOnBuyNowButton(driver);
-		/*String cartMessage=HomePage.getmessage(driver);
-		System.out.println("Cart message"+cartMessage);*/
+
+		/*
+		 * String cartMessage=HomePage.getmessage(driver);
+		 * System.out.println("Cart message"+cartMessage);
+		 */
 	}
 
 	public static void addToCartWithoutLoginAddtocartbutton(WebDriver driver) {
@@ -67,7 +62,7 @@ public class AddToCart {
 		System.out.println("Test");
 		DriverActions.scrollDownWindow(driver);
 		Wait.defaultHighWait(driver);
-		HomePage.clickonAddToCartButton(driver);
+
 		Wait.defaultHighWait(driver);
 
 	}

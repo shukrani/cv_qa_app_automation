@@ -54,7 +54,7 @@ public class ExclFileRead {
 				multitabobj = new MultitabBo(mainCategory.getStringCellValue(), subCategory.getStringCellValue(),
 						link.getStringCellValue());
 				listmultilab.add(multitabobj);
-				//return listmultilab;
+				// return listmultilab;
 
 			}
 		} catch (FileNotFoundException e) {
@@ -89,10 +89,12 @@ public class ExclFileRead {
 
 				Cell by = row.getCell(1);
 				Cell locator = row.getCell(2);
+				if (elementName != null && by != null && locator != null) {
 
-				elementsBo = new UIElementsBo(elementName.getStringCellValue(), by.getStringCellValue(),
-						locator.getStringCellValue());
-				list.add(elementsBo);
+					elementsBo = new UIElementsBo(elementName.getStringCellValue(), by.getStringCellValue(),
+							locator.getStringCellValue());
+					list.add(elementsBo);
+				}
 			}
 		} catch (FileNotFoundException e)
 
@@ -209,7 +211,7 @@ public class ExclFileRead {
 						link.getStringCellValue());
 
 				envlist.add(envobj);
-				//return listmultilab;
+				// return listmultilab;
 
 			}
 		} catch (FileNotFoundException e) {
