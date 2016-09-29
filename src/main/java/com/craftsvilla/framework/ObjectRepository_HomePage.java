@@ -63,9 +63,15 @@ public class ObjectRepository_HomePage {
 	static public String link_subcategory = "link_subcategory";
 	static public String link_subcategory_Uppdasaree = "link_subcategory_Uppdasaree";
 	static public String PriceFilter_0_500 = "PriceFilter_0_500";
-	static public String expand_buttonOnForOrder="expand_buttonOnForOrder";
-	static public String cancelButton_OrderhistoryPage="cancelButton_OrderhistoryPage";
-	static public String product_nameOnOrdeSummaryPage="product_nameOnOrdeSummaryPage";
-	static public String product_nameOnOrderHistoryPage="product_nameOnOrderHistoryPage";
-	static public String Button_loginHere="Button_loginHere";
+	static public String expand_buttonOnForOrder = "expand_buttonOnForOrder";
+	static public String cancelButton_OrderhistoryPage = "cancelButton_OrderhistoryPage";
+	static public String product_nameOnOrdeSummaryPage = "product_nameOnOrdeSummaryPage";
+	static public String product_nameOnOrderHistoryPage = "product_nameOnOrderHistoryPage";
+	static public String Button_loginHere = "Button_loginHere";
+	
+	static public String contactUsLink = "contactUsLink";
+	static public String contactUsEmail = "contactUsEmail";
+	static public String contactUsPhone = "contactUsPhone";
+	public static String downloadAppLink="downloadAppLink";
+
 }
