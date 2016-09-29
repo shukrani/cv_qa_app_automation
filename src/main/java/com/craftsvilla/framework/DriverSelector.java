@@ -162,6 +162,6 @@ public class DriverSelector {
 	}
 
 	public static void stopAppium() {
-		service.start();
+		service.stop();
 	}
 }
