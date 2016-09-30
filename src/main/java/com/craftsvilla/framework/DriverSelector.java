@@ -134,9 +134,6 @@ public class DriverSelector {
 
 	public static AndroidDriver getAndroidDriver() {
 
-		if (driver != null)
-			return driver;
-
 		service = AppiumDriverLocalService.buildDefaultService();
 		service.start();
 
@@ -144,10 +141,10 @@ public class DriverSelector {
 
 		capabilities.setCapability("app", new File("src/main/resources/Input/cv.apk").getAbsolutePath());
 
-		capabilities.setCapability("deviceName", "any_id");// to get
-															// device id
-															// see $adb
-															// devices
+		capabilities.setCapability("deviceName", "T00940VM35");// to get
+																// device id
+																// see $adb
+																// devices
 
 		try {
 			driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

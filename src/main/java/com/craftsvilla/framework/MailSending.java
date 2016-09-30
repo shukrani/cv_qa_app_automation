@@ -148,7 +148,7 @@ public class MailSending {
 		Mailer mailer = new Mailer(properties, "shukrani.bille@craftsvilla.com", "Raani@2400245");
 
 		try {
-			mailer.sendMessage(emailMessagenew);
+			//mailer.sendMessage(emailMessagenew);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

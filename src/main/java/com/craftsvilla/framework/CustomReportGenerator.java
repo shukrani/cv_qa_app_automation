@@ -65,7 +65,8 @@ public class CustomReportGenerator implements ITestListener {
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
 		testCaseResults = TestCase.prepareTestCaseResult(testCaseResults);
-		MailSending.mailTestcasesResult(testCaseResults, passcount, failCount);
+		// MailSending.mailTestcasesResult(testCaseResults, passcount,
+		// failCount);
 
 		System.out.println("Started code cleanup");
 		FailedTestCases.codecleanup();
