@@ -28,7 +28,7 @@ public class MailSending {
 
 		htmlbody.append("<h4>" + configReader.getPropertyValue("url") + "</h4>");
 
-		//);
+		// );
 
 		Properties properties = System.getProperties();
 
@@ -39,10 +39,12 @@ public class MailSending {
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.port", "587");
 
-		com.craftsvilla.mobileAppAutomation.framework.Message emailMessagenew = new com.craftsvilla.mobileAppAutomation.framework.Message();
-		//  Session session = Session.getDefaultInstance(properties, new SMTPAuthenticator());
-		//Session session = Session.getDefaultInstance(properties);
-		//MimeMessage message = new MimeMessage(session);
+		Message emailMessagenew = new Message();
+
+		// Session session = Session.getDefaultInstance(properties, new
+		// SMTPAuthenticator());
+		// Session session = Session.getDefaultInstance(properties);
+		// MimeMessage message = new MimeMessage(session);
 		passedTestCases.addAll(getStatusWiseList(testcasesResult, "Passed"));
 		failedTestCases.addAll(getStatusWiseList(testcasesResult, "Failed"));
 		htmlbody.append("<h3>Total Passed testcases = " + passcount);
@@ -98,8 +100,8 @@ public class MailSending {
 			htmlbody.append("</table>");
 		}
 		emailMessagenew.setSender("shukrani.bille@craftsvilla.com");
-		//message.setFrom(new InternetAddress(emailfrom));
-		//message.addRecipients(Message.RecipientType.TO,InternetAddress.parse(emailTo));
+		// message.setFrom(new InternetAddress(emailfrom));
+		// message.addRecipients(Message.RecipientType.TO,InternetAddress.parse(emailTo));
 		StringTokenizer st = new StringTokenizer(emailTo, ",");
 		if (st.countTokens() > 0) {
 			while (st.hasMoreElements()) {
@@ -109,18 +111,19 @@ public class MailSending {
 					emailMessagenew.addReceiver(receiver.trim());
 			}
 		}
-		//emailMessagenew.addReceiver("shukrani.bill@craftsvilla.com");
+		// emailMessagenew.addReceiver("shukrani.bill@craftsvilla.com");
 
 		if (failCount == 0) {
-			//message.setSubject("All testcases are passed");
+			// message.setSubject("All testcases are passed");
 			emailMessagenew.setSubject("[Tracking]All testcases are passed passed");
 		} else {
 			emailMessagenew.setSubject(severityWiseCount(failedTestCases));
-			//message.setSubject(severityWiseCount(failedTestCases));
+			// message.setSubject(severityWiseCount(failedTestCases));
 		}
 
-		//BodyPart messageTextBodyPart = new MimeBodyPart();
-		//Multipart multipart = new MimeMultipart();messageTextBodyPart.setContent(htmlbody.toString(),"text/html");multipart.addBodyPart(messageTextBodyPart);
+		// BodyPart messageTextBodyPart = new MimeBodyPart();
+		// Multipart multipart = new
+		// MimeMultipart();messageTextBodyPart.setContent(htmlbody.toString(),"text/html");multipart.addBodyPart(messageTextBodyPart);
 		emailMessagenew.setBody(htmlbody.toString());
 
 		// attaching screenshot
@@ -132,23 +135,27 @@ public class MailSending {
 			String str = listfile[i].getName();
 			if (str.endsWith(".jpg") || str.equalsIgnoreCase("FailedTestcasesUrl.txt")
 					|| str.equalsIgnoreCase("FailedTestcasesResons.txt")) {
-				//MimeBodyPart attachmentmessageBodyPart = new MimeBodyPart();
+				// MimeBodyPart attachmentmessageBodyPart = new MimeBodyPart();
 				System.out.println(listfile[i].getName());
-				//DataSource source = new FileDataSource(
-				//        new File("test-output/" + listfile[i].getName()));
-				//attachmentmessageBodyPart.setDataHandler(new DataHandler(source));
-				//attachmentmessageBodyPart.setFileName(listfile[i].getName());
-				//multipart.addBodyPart(attachmentmessageBodyPart);
+				// DataSource source = new FileDataSource(
+				// new File("test-output/" + listfile[i].getName()));
+				// attachmentmessageBodyPart.setDataHandler(new
+				// DataHandler(source));
+				// attachmentmessageBodyPart.setFileName(listfile[i].getName());
+				// multipart.addBodyPart(attachmentmessageBodyPart);
 				emailMessagenew.addAttachment(listfile[i]);
 			}
 
 		}
 
-		//message.setContent(multipart);Transport.send(message);System.out.println("message sent successfully....");
+		// message.setContent(multipart);Transport.send(message);System.out.println("message
+		// sent successfully....");
 		Mailer mailer = new Mailer(properties, "shukrani.bille@craftsvilla.com", "Raani@2400245");
 
 		try {
-			//mailer.sendMessage(emailMessagenew);
+
+			mailer.sendMessage(emailMessagenew);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -225,90 +232,90 @@ public class MailSending {
 	}
 
 }
-/*public static void mailingBrowserStackResult() {
-
-	htmlbody_browserstack.append("<h4>" + configReader.getPropertyValue("url") + "</h4>");
-
-	//);
-
-	Properties properties = System.getProperties();
-
-	properties.setProperty("mail.smtp.host", host);
-
-	properties.put("mail.smtp.auth", "true");
-	properties.put("mail.smtp.starttls.enable", "true");
-	properties.put("mail.smtp.host", "smtp.gmail.com");
-	properties.put("mail.smtp.port", "587");
-
-	com.craftsvilla.framework.Message emailMessage = new com.craftsvilla.framework.Message();
-	//com.craftsvilla.framework.Message emailMessageforfailed = new com.craftsvilla.framework.Message();
-
-	if (browserlist.size() > 0) {
-
-		htmlbody_browserstack.append("\n");
-		htmlbody_browserstack.append("<br>");
-		htmlbody_browserstack.append("<table width='100%' cellpadding='0' style='border-color:#000000;border:1' >");
-		htmlbody_browserstack.append(
-				"<thead style='padding:10px 0;font-weight:bold;font-size:16px;background-color: rgba(56, 35, 31, 0.04);color:#000000;'>");
-		htmlbody_browserstack.append("<th style='width:20%; padding:5px 0;'> OS Name </th> ");
-		htmlbody_browserstack.append("<th style='width:20%;padding:5px 0;'> Browser </th> ");
-		htmlbody_browserstack.append("<th style='width:20%; padding:5px 0;'> Version </th> ");
-		htmlbody_browserstack.append("<th style='width:20%;padding:5px 0;'> Total </th> ");
-		htmlbody_browserstack.append("<th style='width:60%; padding:5px 0;'> Passed </th>");
-		htmlbody_browserstack.append("<th style='width:60%; padding:5px 0'> Failed </th>");
-
-		htmlbody_browserstack.append("</thead>");
-		for (int i = 1; i < browserlist.size(); i++) {
-
-			htmlbody_browserstack.append(
-					"<tr style='background-color: rgba(153, 83, 83, 0.04);padding:10px 0;font-size: 14px;color:#000000;font-weight: bold;'>");
-			htmlbody_browserstack.append("<td style='padding:5px;'>" + browserlist.get(i).getOSVersion() + "</td>");
-			htmlbody_browserstack
-					.append("<td style='padding:5px;'>" + browserlist.get(i).getBrowserName() + "</td> ");
-			htmlbody_browserstack
-					.append("<td style='padding:5px'>" + browserlist.get(i).getBrowserVersion() + "</td> ");
-			htmlbody_browserstack
-					.append("<td style='padding:5px'>" + browserlist.get(i).getTotalexcuted() + "</td> ");
-			htmlbody_browserstack
-					.append("<td style='padding:5px;color: #fff;font-weight: bold;font-size: 14px;background-color: rgba(89, 153, 83, 0.62);'> "
-							+ browserlist.get(i).getTotalpass() + "</td> ");
-
-			htmlbody_browserstack
-					.append("<td style='padding:5px;background-color: rgba(255, 0, 0, 0.78);font-size: 14px;font-weight: bold;'>"
-							+ browserlist.get(i).getTotalfailed() + "</td> ");
-			htmlbody_browserstack.append("</tr>");
-
-		}
-		htmlbody_browserstack.append("</table>");
-	}
-	emailMessage.setSender("shukrani.bille@craftsvilla.com");
-	//message.setFrom(new InternetAddress(emailfrom));
-	//message.addRecipients(Message.RecipientType.TO,InternetAddress.parse(emailTo));
-	StringTokenizer st = new StringTokenizer(emailTo, ",");
-	if (st.countTokens() > 0) {
-		while (st.hasMoreElements()) {
-			String receiver = (String) st.nextElement();
-
-			if (receiver != null && !receiver.isEmpty())
-				emailMessage.addReceiver(receiver.trim());
-		}
-	}
-	System.out.println("EMAIL BODY IS " + htmlbody_browserstack);
-	//message.setSubject("All testcases are passed");
-	emailMessage.setSubject("Results for Browserstack Suits");
-
-	//BodyPart messageTextBodyPart = new MimeBodyPart();
-	//Multipart multipart = new MimeMultipart();messageTextBodyPart.setContent(htmlbody.toString(),"text/html");multipart.addBodyPart(messageTextBodyPart);
-	emailMessage.setBody(htmlbody_browserstack.toString());
-
-	//message.setContent(multipart);Transport.send(message);System.out.println("message sent successfully....");
-	Mailer mailer = new Mailer(properties, "shukrani.bille@craftsvilla.com", "Raani@2400245");
-
-	try {
-		mailer.sendMessage(emailMessagenew);
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
-}*/
+/*
+ * public static void mailingBrowserStackResult() {
+ * 
+ * htmlbody_browserstack.append("<h4>" + configReader.getPropertyValue("url") +
+ * "</h4>");
+ * 
+ * //);
+ * 
+ * Properties properties = System.getProperties();
+ * 
+ * properties.setProperty("mail.smtp.host", host);
+ * 
+ * properties.put("mail.smtp.auth", "true");
+ * properties.put("mail.smtp.starttls.enable", "true");
+ * properties.put("mail.smtp.host", "smtp.gmail.com");
+ * properties.put("mail.smtp.port", "587");
+ * 
+ * com.craftsvilla.framework.Message emailMessage = new
+ * com.craftsvilla.framework.Message(); //com.craftsvilla.framework.Message
+ * emailMessageforfailed = new com.craftsvilla.framework.Message();
+ * 
+ * if (browserlist.size() > 0) {
+ * 
+ * htmlbody_browserstack.append("\n"); htmlbody_browserstack.append("<br>");
+ * htmlbody_browserstack.
+ * append("<table width='100%' cellpadding='0' style='border-color:#000000;border:1' >"
+ * ); htmlbody_browserstack.append(
+ * "<thead style='padding:10px 0;font-weight:bold;font-size:16px;background-color: rgba(56, 35, 31, 0.04);color:#000000;'>"
+ * ); htmlbody_browserstack.
+ * append("<th style='width:20%; padding:5px 0;'> OS Name </th> ");
+ * htmlbody_browserstack.
+ * append("<th style='width:20%;padding:5px 0;'> Browser </th> ");
+ * htmlbody_browserstack.
+ * append("<th style='width:20%; padding:5px 0;'> Version </th> ");
+ * htmlbody_browserstack.
+ * append("<th style='width:20%;padding:5px 0;'> Total </th> ");
+ * htmlbody_browserstack.
+ * append("<th style='width:60%; padding:5px 0;'> Passed </th>");
+ * htmlbody_browserstack.
+ * append("<th style='width:60%; padding:5px 0'> Failed </th>");
+ * 
+ * htmlbody_browserstack.append("</thead>"); for (int i = 1; i <
+ * browserlist.size(); i++) {
+ * 
+ * htmlbody_browserstack.append(
+ * "<tr style='background-color: rgba(153, 83, 83, 0.04);padding:10px 0;font-size: 14px;color:#000000;font-weight: bold;'>"
+ * ); htmlbody_browserstack.append("<td style='padding:5px;'>" +
+ * browserlist.get(i).getOSVersion() + "</td>"); htmlbody_browserstack
+ * .append("<td style='padding:5px;'>" + browserlist.get(i).getBrowserName() +
+ * "</td> "); htmlbody_browserstack .append("<td style='padding:5px'>" +
+ * browserlist.get(i).getBrowserVersion() + "</td> "); htmlbody_browserstack
+ * .append("<td style='padding:5px'>" + browserlist.get(i).getTotalexcuted() +
+ * "</td> "); htmlbody_browserstack
+ * .append("<td style='padding:5px;color: #fff;font-weight: bold;font-size: 14px;background-color: rgba(89, 153, 83, 0.62);'> "
+ * + browserlist.get(i).getTotalpass() + "</td> ");
+ * 
+ * htmlbody_browserstack
+ * .append("<td style='padding:5px;background-color: rgba(255, 0, 0, 0.78);font-size: 14px;font-weight: bold;'>"
+ * + browserlist.get(i).getTotalfailed() + "</td> ");
+ * htmlbody_browserstack.append("</tr>");
+ * 
+ * } htmlbody_browserstack.append("</table>"); }
+ * emailMessage.setSender("shukrani.bille@craftsvilla.com");
+ * //message.setFrom(new InternetAddress(emailfrom));
+ * //message.addRecipients(Message.RecipientType.TO,InternetAddress.parse(
+ * emailTo)); StringTokenizer st = new StringTokenizer(emailTo, ","); if
+ * (st.countTokens() > 0) { while (st.hasMoreElements()) { String receiver =
+ * (String) st.nextElement();
+ * 
+ * if (receiver != null && !receiver.isEmpty())
+ * emailMessage.addReceiver(receiver.trim()); } }
+ * System.out.println("EMAIL BODY IS " + htmlbody_browserstack);
+ * //message.setSubject("All testcases are passed");
+ * emailMessage.setSubject("Results for Browserstack Suits");
+ * 
+ * //BodyPart messageTextBodyPart = new MimeBodyPart(); //Multipart multipart =
+ * new MimeMultipart();messageTextBodyPart.setContent(htmlbody.toString(),
+ * "text/html");multipart.addBodyPart(messageTextBodyPart);
+ * emailMessage.setBody(htmlbody_browserstack.toString());
+ * 
+ * //message.setContent(multipart);Transport.send(message);System.out.
+ * println("message sent successfully...."); Mailer mailer = new
+ * Mailer(properties, "shukrani.bille@craftsvilla.com", "Raani@2400245");
+ * 
+ * try { mailer.sendMessage(emailMessagenew); } catch (Exception e) { // TODO
+ * Auto-generated catch block e.printStackTrace(); } } }
+ */

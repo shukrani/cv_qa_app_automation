@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .settings
 .classpath
 .project
@@ -5,3 +6,11 @@ bin
 target
 test-output
 
+=======
+.classpath
+.settings
+test-output
+target
+.project
+bin
+>>>>>>> dev_apptestingsb

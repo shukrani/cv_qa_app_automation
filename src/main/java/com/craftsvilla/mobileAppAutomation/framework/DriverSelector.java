@@ -53,7 +53,7 @@ public class DriverSelector {
 
 	}
 
-	public static WebDriver getDriver_browserstacknew() {
+	public static WebDriver getDriver_browserstacknew() throws MalformedURLException {
 
 		WebDriver driver = null;
 		String osname = (EnvironmentBo.getOs()).trim();
@@ -119,15 +119,11 @@ public class DriverSelector {
 		capability.setCapability("build", "TestNG - Sample");
 		capability.setBrowserName(browserName);
 		capability.setVersion(version);
-		try {
-			driver = new RemoteWebDriver(new URL(URL), capability);
-			driver.manage().window().maximize();
-			driver.get(configReader.getPropertyValue("url"));
 
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		driver = new RemoteWebDriver(new URL(URL), capability);
+		driver.manage().window().maximize();
+		driver.get(configReader.getPropertyValue("url"));
+
 		return driver;
 
 	}
@@ -159,6 +155,8 @@ public class DriverSelector {
 	}
 
 	public static void stopAppium() {
-		service.stop();
+		if (service.isRunning())
+			service.stop();
 	}
+
 }

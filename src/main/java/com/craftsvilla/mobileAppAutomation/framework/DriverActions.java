@@ -73,7 +73,9 @@ public class DriverActions {
 
 			}
 			if (by.equals("id")) {
+
 				Wait.waitForElement(driver, By.id(locator), 60);
+
 				driver.findElement(By.id(locator)).click();
 				driver.findElement(By.id(locator)).clear();
 				driver.findElement(By.id(locator)).sendKeys(text);

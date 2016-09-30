@@ -54,7 +54,6 @@ public class ExclFileRead {
 				multitabobj = new MultitabBo(mainCategory.getStringCellValue(), subCategory.getStringCellValue(),
 						link.getStringCellValue());
 				listmultilab.add(multitabobj);
-				// return listmultilab;
 
 			}
 		} catch (FileNotFoundException e) {
@@ -76,6 +75,7 @@ public class ExclFileRead {
 	public static List<UIElementsBo> exclFileRead() {
 
 		try {
+
 			ipstr = new FileInputStream(new File("src/main/resources/Input/UiElement.xls"));
 
 			wb = new HSSFWorkbook(ipstr);
@@ -89,10 +89,11 @@ public class ExclFileRead {
 
 				Cell by = row.getCell(1);
 				Cell locator = row.getCell(2);
+				System.out.println(locator);
 				if (elementName != null && by != null && locator != null) {
-
 					elementsBo = new UIElementsBo(elementName.getStringCellValue(), by.getStringCellValue(),
 							locator.getStringCellValue());
+
 					list.add(elementsBo);
 				}
 			}
@@ -211,7 +212,6 @@ public class ExclFileRead {
 						link.getStringCellValue());
 
 				envlist.add(envobj);
-				// return listmultilab;
 
 			}
 		} catch (FileNotFoundException e) {
@@ -231,15 +231,13 @@ public class ExclFileRead {
 	}
 	// Testing purpose for data
 
-	public static void main(String[] args) {
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * List<UIElementsBo> elements = new ArrayList<>(); elements =
+	 * ExclFileRead.exclFileRead(); System.out.println("HEllo");
+	 * System.out.println("SIZE" + elements.size()); for (int i = 0; i <
+	 * elements.size(); i++) { System.out.println(elements); } }
+	 */
 
-		List<Environment> elements = new ArrayList<>();
-		elements.addAll(ExclFileRead.readElx_envirnment());
-		System.out.println("HEllo");
-		System.out.println("SIZE" + elements.size());
-		for (int i = 0; i < elements.size(); i++) {
-			System.out.println(elements.get(i).getOsName() + "\t" + elements.get(i).getBrowsername() + "\t"
-					+ elements.get(i).getVersion());
-		}
-	}
 }
