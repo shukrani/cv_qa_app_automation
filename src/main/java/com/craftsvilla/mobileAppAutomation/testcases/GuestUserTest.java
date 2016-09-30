@@ -35,7 +35,7 @@ public class GuestUserTest {
 		if (result.getStatus() == 2) {
 			FailedTestCases.actionAfterFailedTestcase(driver, result);
 		}
-		//driver.quit();
+		// driver.quit();
 
 	}
 
