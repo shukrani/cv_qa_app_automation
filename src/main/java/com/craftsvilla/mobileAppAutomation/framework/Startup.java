@@ -17,8 +17,8 @@ import org.testng.xml.XmlInclude;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.Environment;
-import com.craftsvilla.mobileAppAutomation.dataobjects.EnvironmentBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.Environment;
+import com.craftsvilla.mobileAppAutomation.dataobject.EnvironmentBo;
 
 public class Startup {
 	public static void main(String[] args) {
@@ -44,17 +44,18 @@ public class Startup {
 			classLoadersList.add(ClasspathHelper.contextClassLoader());
 			classLoadersList.add(ClasspathHelper.staticClassLoader());
 
-			Reflections reflections = new Reflections(new ConfigurationBuilder()
-					.setScanners(new SubTypesScanner(false), new ResourcesScanner())
-					.setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
-					.filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix("com.craftsvilla.testcase"))));
+			Reflections reflections = new Reflections(
+					new ConfigurationBuilder().setScanners(new SubTypesScanner(false), new ResourcesScanner())
+							.setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
+							.filterInputsBy(new FilterBuilder()
+									.include(FilterBuilder.prefix("com.craftsvilla.mobileAppAutomation.testcases"))));
 			Set<Class<?>> classesset = reflections.getSubTypesOf(Object.class);
 			List<XmlInclude> includel = new ArrayList<>();
 			for (String names : includetestcaseNames) {
 				Log4jLogger.writeErrorLog("Executing testcase" + names.toString());
 
 				includel.add(new XmlInclude(names.toString()));
-				//System.out.println("include"+includel);
+				// System.out.println("include"+includel);
 
 			}
 
@@ -81,6 +82,6 @@ public class Startup {
 			testNG.run();
 
 		}
-		//MailSending.mailingBrowserStackResult();
+		// MailSending.mailingBrowserStackResult();
 	}
 }

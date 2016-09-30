@@ -14,11 +14,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.Environment;
-import com.craftsvilla.mobileAppAutomation.dataobjects.MultitabBo;
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestCaseBo;
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestDataBO;
-import com.craftsvilla.mobileAppAutomation.dataobjects.UIElementsBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.Environment;
+import com.craftsvilla.mobileAppAutomation.dataobject.MultitabBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestCaseBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestDataBO;
+import com.craftsvilla.mobileAppAutomation.dataobject.UIElementsBo;
 
 public class ExclFileRead {
 	public String filelocation;

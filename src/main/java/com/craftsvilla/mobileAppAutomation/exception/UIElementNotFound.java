@@ -1,4 +1,4 @@
-package com.craftsvilla.mobileAppAutomation.exceptions;
+package com.craftsvilla.mobileAppAutomation.exception;
 
 import com.craftsvilla.mobileAppAutomation.framework.Log4jLogger;
 

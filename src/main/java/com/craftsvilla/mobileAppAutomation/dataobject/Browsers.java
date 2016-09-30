@@ -1,7 +1,6 @@
-package com.craftsvilla.mobileAppAutomation.dataobjects;
+package com.craftsvilla.mobileAppAutomation.dataobject;
 
-public class Environment {
-
+public class Browsers {
 	String osName;
 	String browsername;
 	String version;
@@ -35,7 +34,7 @@ public class Environment {
 		return "Browsers [osName=" + osName + ", browsername=" + browsername + ", version=" + version + "]";
 	}
 
-	public Environment(String osName, String browsername, String version) {
+	public Browsers(String osName, String browsername, String version) {
 		super();
 		this.osName = osName;
 		this.browsername = browsername;

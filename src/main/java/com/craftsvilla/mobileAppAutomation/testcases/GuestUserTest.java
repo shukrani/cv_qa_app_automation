@@ -1,4 +1,4 @@
-package com.craftsvilla.mobileAppAutomation.testcase;
+package com.craftsvilla.mobileAppAutomation.testcases;
 
 import org.junit.Assert;
 import org.testng.ITestResult;
@@ -13,31 +13,16 @@ import com.craftsvilla.mobileAppAutomation.pageObjects.TestData;
 
 import io.appium.java_client.android.AndroidDriver;
 
-public class LoginTest {
+public class GuestUserTest {
 
 	AndroidDriver<?> driver = null;
 
 	@Test
-	public void loginContentTest() {
+	public void guestUserOnboardingTest() {
 		driver = DriverSelector.getAndroidDriver();
 
-		Assert.assertTrue(DriverActions.isElementDisplay(driver, ObjectRepository.onboardingEmail));
-		Assert.assertTrue(DriverActions.isElementDisplay(driver, ObjectRepository.getStarted));
-
-		DriverSelector.stopAppium();
-
-	}
-
-	@Test
-	public void loginTest() {
-		driver = DriverSelector.getAndroidDriver();
-
-		DriverActions.sendKeys(driver, ObjectRepository.onboardingEmail, TestData.loginEmail);
+		DriverActions.sendKeys(driver, ObjectRepository.onboardingEmail, TestData.guestEmail);
 		DriverActions.click(driver, ObjectRepository.getStarted);
-		DriverActions.sendKeys(driver, ObjectRepository.loginPassword, TestData.loginPass);
-		if (!DriverActions.isElementDisplay(driver, ObjectRepository.loginBtn))
-			DriverActions.hideKeyBoard(driver);
-		DriverActions.click(driver, ObjectRepository.loginBtn);
 
 		Assert.assertTrue(DriverActions.isElementDisplay(driver, ObjectRepository.searchTextView));
 
@@ -50,7 +35,7 @@ public class LoginTest {
 		if (result.getStatus() == 2) {
 			FailedTestCases.actionAfterFailedTestcase(driver, result);
 		}
-		// driver.quit();
+		//driver.quit();
 
 	}
 

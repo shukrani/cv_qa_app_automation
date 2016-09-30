@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.EnvironmentBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.EnvironmentBo;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;

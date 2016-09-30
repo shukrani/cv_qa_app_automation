@@ -1,4 +1,4 @@
-package com.craftsvilla.mobileAppAutomation.dataobjects;
+package com.craftsvilla.mobileAppAutomation.dataobject;
 
 public class TestCaseBo {
 	String testCaseName;

@@ -7,7 +7,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestCaseResult;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestCaseResult;
 
 public class CustomReportGenerator implements ITestListener {
 	PropertyReader configReader = new PropertyReader();

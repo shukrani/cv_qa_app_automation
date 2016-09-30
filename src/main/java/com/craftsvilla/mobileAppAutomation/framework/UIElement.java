@@ -2,7 +2,7 @@ package com.craftsvilla.mobileAppAutomation.framework;
 
 import java.util.List;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.UIElementsBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.UIElementsBo;
 
 public class UIElement {
 	public static List<UIElementsBo> list;

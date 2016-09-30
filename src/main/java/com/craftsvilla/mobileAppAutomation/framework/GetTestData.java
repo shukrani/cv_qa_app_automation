@@ -2,8 +2,8 @@ package com.craftsvilla.mobileAppAutomation.framework;
 
 import java.util.List;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestDataBO;
-import com.craftsvilla.mobileAppAutomation.exceptions.UIElementNotFound;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestDataBO;
+import com.craftsvilla.mobileAppAutomation.exception.UIElementNotFound;
 
 public class GetTestData {
 	public static List<TestDataBO> list;

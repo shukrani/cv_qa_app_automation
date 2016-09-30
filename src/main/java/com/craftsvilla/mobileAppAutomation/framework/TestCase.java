@@ -3,8 +3,8 @@ package com.craftsvilla.mobileAppAutomation.framework;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestCaseBo;
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestCaseResult;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestCaseBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestCaseResult;
 
 public class TestCase {
 	private static List<String> testcaselist;

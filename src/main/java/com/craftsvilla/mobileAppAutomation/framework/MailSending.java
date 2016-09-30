@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
-import com.craftsvilla.mobileAppAutomation.dataobjects.BrowserResult;
-import com.craftsvilla.mobileAppAutomation.dataobjects.EnvironmentBo;
-import com.craftsvilla.mobileAppAutomation.dataobjects.TestCaseResult;
+import com.craftsvilla.mobileAppAutomation.dataobject.BrowserResult;
+import com.craftsvilla.mobileAppAutomation.dataobject.EnvironmentBo;
+import com.craftsvilla.mobileAppAutomation.dataobject.TestCaseResult;
 
 public class MailSending {
 	static PropertyReader configReader = new PropertyReader();
