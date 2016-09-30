@@ -102,7 +102,7 @@ public class DriverActions {
 			}
 			if (by.equals("id")) {
 				Wait.defaultsmallWait(driver);
-				driver.findElement(By.id(locator)).click();
+				//driver.findElement(By.id(locator)).click();
 				driver.findElement(By.id(locator)).sendKeys(keys);
 			}
 			if (by.equals("class")) {

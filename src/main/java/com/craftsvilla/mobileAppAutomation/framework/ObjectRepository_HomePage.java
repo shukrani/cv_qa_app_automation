@@ -10,4 +10,7 @@ public class ObjectRepository_HomePage {
 	static public String textbox_minpricefilter = "textbox_minpricefilter";
 	static public String textbox_maxpricefilter = "textbox_maxpricefilter";
 	static public String button_subcategory = "button_subcategory";
+	static public String textbox_searchbox = "textbox_searchbox";
+	static public String textbox_editSearch = "textbox_editSearch";
+	static public String span_recentSearch = "span_recentSearch";
 }
