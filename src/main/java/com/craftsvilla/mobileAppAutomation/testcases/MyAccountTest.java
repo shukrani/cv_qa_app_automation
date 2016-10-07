@@ -24,6 +24,7 @@ public class MyAccountTest extends BaseTest {
 
 		OnboardingActivity onboardingActivity = new OnboardingActivity();
 		onboardingActivity.login(driver);
+		DriverActions.waitForElement(driver, ObjectRepository.searchTextView, 30);
 		Assert.assertTrue(DriverActions.isElementDisplay(driver, ObjectRepository.searchTextView));
 		HomeActivity homeActivity = new HomeActivity();
 		homeActivity.navigateToMyAccount(driver);
