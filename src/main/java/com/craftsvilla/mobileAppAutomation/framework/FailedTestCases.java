@@ -18,7 +18,8 @@ public class FailedTestCases {
 	static File screenshotfile = new File("test-output/");
 
 	public static void actionAfterFailedTestcase(WebDriver driver, ITestResult result) { // TODO
-		System.out.println("URL for" + result.getName() + "\tis\t" + driver.getCurrentUrl() + "\n");
+		// System.out.println("URL for" + result.getName() + "\tis\t" +
+		// driver.getCurrentUrl() + "\n");
 		Wait.defaultHighWait(driver);
 		Screenshot.takeScreenshot(driver, result.getName());
 		Wait.defaultMediumWait(driver);
@@ -33,7 +34,8 @@ public class FailedTestCases {
 		try {
 			fileWriter = new FileWriter(urlForFailedTestcases, true);
 			bufferedWriter = new BufferedWriter(fileWriter);
-			bufferedWriter.write("URL for " + result.getName() + "\tis\t" + driver.getCurrentUrl() + "\n");
+			// bufferedWriter.write("URL for " + result.getName() + "\tis\t" +
+			// driver.getCurrentUrl() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,7 +57,7 @@ public class FailedTestCases {
 		}
 		File[] listfile = screenshotfile.listFiles();
 		for (int i = 0; i < listfile.length; i++) {
-			//System.out.println("deleting" + listfile[i].getName());
+			// System.out.println("deleting" + listfile[i].getName());
 			listfile[i].delete();
 		}
 

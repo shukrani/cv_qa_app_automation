@@ -42,6 +42,7 @@ public class DriverActions {
 
 				Wait.defaultsmallWait(driver);
 				driver.findElement(By.className(locator)).click();
+
 			}
 			if (by.equals("linktext")) {
 
@@ -59,6 +60,57 @@ public class DriverActions {
 		}
 	}
 
+	public static void swipe(AndroidDriver driver, String fromElementName, String toElementName) {
+		String by = elements.getbyName(fromElementName);
+		String locator = elements.getlocatorName(fromElementName);
+		System.out.println("element name" + fromElementName);
+		System.out.println("Locator is" + locator);
+		WebElement from = null, to = null;
+
+		if (by != null && locator != null) {
+			if (by.equals("xpath")) {
+				Wait.defaultsmallWait(driver);
+				from = driver.findElement(By.xpath(locator));
+			}
+			if (by.equals("id")) {
+				Wait.defaultsmallWait(driver);
+				from = driver.findElement(By.id(locator));
+			}
+			if (by.equals("class")) {
+
+				Wait.defaultsmallWait(driver);
+				from = driver.findElement(By.className(locator));
+			}
+			by = elements.getbyName(toElementName);
+			locator = elements.getlocatorName(toElementName);
+
+			switch (by.toLowerCase().trim()) {
+			case "xpath": {
+				to = driver.findElement(By.xpath(locator));
+				break;
+			}
+			case "id": {
+				to = driver.findElement(By.id(locator));
+				break;
+			}
+			case "class": {
+				to = driver.findElement(By.className(locator));
+				break;
+			}
+
+			}
+			driver.swipe(from.getLocation().getX(), from.getLocation().getY(), to.getLocation().getX(),
+					to.getLocation().getY(), 1000);
+		} else {
+			try {
+				throw new UIElementNotFound("ElementName/Locator Not Found in UI element sheet" + fromElementName);
+			} catch (UIElementNotFound e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public static void sendKeys(WebDriver driver, String elementName, String text) {
 		String by = elements.getbyName(elementName);
 		String locator = elements.getlocatorName(elementName);
@@ -67,7 +119,7 @@ public class DriverActions {
 		if (by != null && locator != null) {
 
 			if (by.equals("xpath")) {
-				Wait.defaultsmallWait(driver);
+				Wait.waitForElement(driver, By.xpath(locator), 60);
 				driver.findElement(By.xpath(locator)).clear();
 				driver.findElement(By.xpath(locator)).sendKeys(text);
 
@@ -81,7 +133,7 @@ public class DriverActions {
 				driver.findElement(By.id(locator)).sendKeys(text);
 			}
 			if (by.equals("class")) {
-				Wait.defaultsmallWait(driver);
+				Wait.waitForElement(driver, By.className(locator), 60);
 				driver.findElement(By.className(text)).clear();
 				driver.findElement(By.className(locator)).sendKeys(text);
 			}
@@ -132,16 +184,16 @@ public class DriverActions {
 			if (by != null && locator != null) {
 				if (by.equals("xpath")) {
 
-					Wait.waitForElement(driver, By.xpath(locator), 30);
+					// Wait.waitForElement(driver, By.xpath(locator), 30);
 					result = driver.findElement(By.xpath(locator)).isDisplayed();
 
 				}
 				if (by.equals("id")) {
-					Wait.waitForElement(driver, By.id(locator), 30);
+					// Wait.waitForElement(driver, By.id(locator), 30);
 					result = driver.findElement(By.id(locator)).isDisplayed();
 				}
 				if (by.equals("class")) {
-					Wait.waitForElement(driver, By.className(locator), 30);
+					// Wait.waitForElement(driver, By.className(locator), 30);
 					result = driver.findElement(By.className(locator)).isDisplayed();
 				}
 			} else
@@ -392,6 +444,34 @@ public class DriverActions {
 			driver.hideKeyboard();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static void waitForElement(WebDriver driver, String elementName, int time) {
+		try {
+			String by = elements.getbyName(elementName);
+			String locator = elements.getlocatorName(elementName);
+			By findBy = null;
+			switch (by.toLowerCase().trim()) {
+			case "xpath": {
+				findBy = By.xpath(locator);
+				break;
+
+			}
+			case "id": {
+				findBy = By.id(locator);
+				break;
+			}
+			case "class": {
+				findBy = By.className(locator);
+				break;
+			}
+			}
+			Wait.waitForElement(driver, findBy, 30);
+
+		} catch (Exception e) {
+			// e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
