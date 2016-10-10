@@ -5,6 +5,7 @@ import com.craftsvilla.mobileAppAutomation.framework.DriverActions;
 import io.appium.java_client.android.AndroidDriver;
 
 public class OnboardingActivity {
+	String skip = "Onboarding_skip";
 
 	public OnboardingActivity login(AndroidDriver driver) {
 		if (!DriverActions.isElementDisplay(driver, ObjectRepository.onboardingEmail)) {
@@ -18,6 +19,17 @@ public class OnboardingActivity {
 		DriverActions.click(driver, ObjectRepository.loginBtn);
 
 		return this;
+	}
+
+	public void skip(AndroidDriver<?> driver) {
+
+		if (!DriverActions.isElementDisplay(driver, ObjectRepository.onboardingEmail)) {
+			tryAgain(driver);
+		}
+
+		DriverActions.waitForElement(driver, skip, 30);
+		DriverActions.click(driver, skip);
+
 	}
 
 	public void tryAgain(AndroidDriver driver) {

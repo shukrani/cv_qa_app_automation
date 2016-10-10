@@ -9,5 +9,6 @@ public class TestData {
 	static public String loginEmail = testData.getTestData("loginEmail");
 	static public String loginPass = testData.getTestData("loginPass");
 	static public String guestEmail = System.currentTimeMillis() + testData.getTestData("guestEmail");
+	static public String searchText = testData.getTestData("searchText");
 
 }
