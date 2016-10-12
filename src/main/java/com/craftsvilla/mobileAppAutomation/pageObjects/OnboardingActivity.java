@@ -11,6 +11,7 @@ public class OnboardingActivity {
 		if (!DriverActions.isElementDisplay(driver, ObjectRepository.onboardingEmail)) {
 			tryAgain(driver);
 		}
+		DriverActions.waitForElement(driver, ObjectRepository.onboardingEmail, 30);
 		DriverActions.sendKeys(driver, ObjectRepository.onboardingEmail, TestData.loginEmail);
 		DriverActions.click(driver, ObjectRepository.getStarted);
 		DriverActions.sendKeys(driver, ObjectRepository.loginPassword, TestData.loginPass);
@@ -27,7 +28,7 @@ public class OnboardingActivity {
 			tryAgain(driver);
 		}
 
-		DriverActions.waitForElement(driver, skip, 30);
+		DriverActions.waitForElement(driver, skip, 60);
 		DriverActions.click(driver, skip);
 
 	}

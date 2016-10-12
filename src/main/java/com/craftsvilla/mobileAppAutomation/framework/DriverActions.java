@@ -31,22 +31,22 @@ public class DriverActions {
 
 		if (by != null && locator != null) {
 			if (by.equals("xpath")) {
-				Wait.defaultsmallWait(driver);
+				waitForElement(driver, elementName, 30);
 				driver.findElement(By.xpath(locator)).click();
 			}
 			if (by.equals("id")) {
-				Wait.defaultsmallWait(driver);
+				waitForElement(driver, elementName, 30);
 				driver.findElement(By.id(locator)).click();
 			}
 			if (by.equals("class")) {
 
-				Wait.defaultsmallWait(driver);
+				waitForElement(driver, elementName, 30);
 				driver.findElement(By.className(locator)).click();
 
 			}
 			if (by.equals("linktext")) {
 
-				Wait.defaultsmallWait(driver);
+				waitForElement(driver, elementName, 30);
 				driver.findElement(By.linkText(locator)).sendKeys(Keys.ENTER);
 
 			}

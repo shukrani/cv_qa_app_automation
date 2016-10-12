@@ -9,6 +9,7 @@ public class SearchResultsActivity {
 	String firstProduct = "SearchResults_firstProduct";
 
 	public SearchResultsActivity goToDescription(AndroidDriver driver) {
+		DriverActions.waitForElement(driver, firstProduct, 30);
 		DriverActions.click(driver, firstProduct);
 		return this;
 	}
