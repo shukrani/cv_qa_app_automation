@@ -15,10 +15,10 @@ public class AndroidFlow extends CommonAppiumTest implements DeviceInterface {
     }
 
     public void login(LoginPage loginPage, String username, String password) {
-        loginPage.enterUserAndPassword(username, password);
+        loginPage.enterUserEmail(username);
         driver.hideKeyboard();
         loginPage.enterSiteURL();
-        loginPage.signIn();
+        loginPage.getStarted();
     }
 
     public void waitForHomePage(WelcomePage welcomePage) {

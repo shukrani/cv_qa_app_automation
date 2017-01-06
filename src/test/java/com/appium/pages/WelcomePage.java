@@ -7,9 +7,9 @@ import com.appium.page.objects.WelcomePageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
+
+import org.openqa.selenium.support.PageFactory;
 
 public class WelcomePage extends CommonAppiumTest {
     public ViewFactory viewFactory = new ViewFactory(driver);
@@ -47,8 +47,8 @@ public class WelcomePage extends CommonAppiumTest {
 
     }
 
-    public String verifyUserIsLoggedIn() {
-        return welcomePageObjects.LOGGED_IN_USER.getText();
+    public Boolean verifyUserIsLoggedIn() {
+        return welcomePageObjects.MY_ACCOUNT.isDisplayed();
     }
 
     public void waitForHomePageToLoad() {

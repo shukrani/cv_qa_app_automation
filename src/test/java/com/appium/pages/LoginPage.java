@@ -12,46 +12,64 @@ import org.openqa.selenium.support.PageFactory;
 
 @PageName("Login Page")
 public class LoginPage extends CommonAppiumTest {
-    public ViewFactory viewFactory = new ViewFactory(driver);
-    public DeviceInterface runnerInfo;
-    public LoginPageObjects loginPageObjects = new LoginPageObjects();
+	public ViewFactory viewFactory = new ViewFactory(driver);
+	public DeviceInterface runnerInfo;
+	public LoginPageObjects loginPageObjects = new LoginPageObjects();
 
-    public LoginPage(AppiumDriver<MobileElement> driver) {
-        super(driver);
-        PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
-        runnerInfo = viewFactory.getMobilePlatform(driver.toString().split(":")[0].toString());
-    }
+	public LoginPage(AppiumDriver<MobileElement> driver) {
+		super(driver);
+		PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
+		runnerInfo = viewFactory.getMobilePlatform(driver.toString().split(":")[0].toString());
+	}
 
-    public WelcomePage enterValidCredentails(String username, String password) {
-        runnerInfo.login(this, username, password);
-        return new WelcomePage(driver);
-    }
+	public WelcomePage enterValidCredentails(String username, String password) {
+		runnerInfo.login(this, username, password);
+		return new WelcomePage(driver);
+	}
 
-    public String validateErrorMessage() {
-        return driver.getPageSource();
-    }
+	public String validateErrorMessage() {
+		return driver.getPageSource();
+	}
 
-    public boolean validateUserNameFieldIsDisplayed() {
-        return loginPageObjects.username.isDisplayed();
-    }
+	public boolean validateUserNameFieldIsDisplayed() {
+		return loginPageObjects.email.isDisplayed();
+	}
 
-    public void enterUserAndPassword(String user, String pass) {
-        // TODO Auto-generated method stub
-        waitForPageToLoad(loginPageObjects.username);
-        logStepIntoExtentReport(getPageObjectElemetDescription(loginPageObjects,"username"),"SendKeys",user);
-        loginPageObjects.username.sendKeys(user);
-        logStepIntoExtentReport(getPageObjectElemetDescription(loginPageObjects,"password"),"SendKeys",pass);
-        loginPageObjects.password.sendKeys(pass);
-    }
+	public void enterUserEmail(String user) {
+		// TODO Auto-generated method stub
+		waitForPageToLoad(loginPageObjects.email);
+		logStepIntoExtentReport(getPageObjectElemetDescription(loginPageObjects, "email"), "SendKeys", user);
+		loginPageObjects.email.clear();
+		loginPageObjects.email.sendKeys(user);
 
-    public void signIn() {
-        loginPageObjects.sign_in.click();
-    }
+	}
 
-    public void enterSiteURL() {
-        // TODO Auto-generated method stub
-        loginPageObjects.add_self_site.click();
-        loginPageObjects.server_url.sendKeys("https://vodqademo.wordpress.com");
-    }
+	public void enterPassword(String password) {
+		// TODO Auto-generated method stub
+
+		//waitForPageToLoad(loginPageObjects.email);
+		PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
+		waitForPageToLoad(loginPageObjects.password);
+		logStepIntoExtentReport(getPageObjectElemetDescription(loginPageObjects, "password"), "SendKeys", password);
+		loginPageObjects.password.clear();
+		loginPageObjects.password.sendKeys(password);
+
+	}
+
+	public void getStarted() {
+		loginPageObjects.getStarted.click();
+	}
+
+	public void login() {
+		waitForPageToLoad(loginPageObjects.login);
+		PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
+		loginPageObjects.login.click();
+	}
+
+	public void enterSiteURL() {
+		// TODO Auto-generated method stub
+		loginPageObjects.add_self_site.click();
+		loginPageObjects.server_url.sendKeys("https://vodqademo.wordpress.com");
+	}
 
 }
