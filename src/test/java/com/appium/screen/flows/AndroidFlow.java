@@ -17,7 +17,7 @@ public class AndroidFlow extends CommonAppiumTest implements DeviceInterface {
     public void login(LoginPage loginPage, String username, String password) {
         loginPage.enterUserEmail(username);
         driver.hideKeyboard();
-        loginPage.enterSiteURL();
+        
         loginPage.getStarted();
     }
 

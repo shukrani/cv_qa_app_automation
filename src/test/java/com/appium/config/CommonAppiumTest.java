@@ -30,7 +30,7 @@ public class CommonAppiumTest {
     }
 
     public void waitForPageToLoad(WebElement id) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(id));
     }
 

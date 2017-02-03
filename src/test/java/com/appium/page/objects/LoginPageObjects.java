@@ -46,9 +46,7 @@ public class LoginPageObjects {
 	@FindBy(id = "wp-submit")
 	public MobileElement login;
 
-	@CacheLookup
-	@AndroidFindBy(id = "org.wordpress.android:id/nux_url")
-	@iOSFindBy(xpath = ".//*[@value='Site Address (URL)']")
-	@SelendroidFindBy(id = "nux_url")
-	public MobileElement server_url;
+	@AndroidFindBy(id = "com.craftsvilla.app:id/mTextViewSkipOnboarding")
+	public MobileElement skip;
+
 }

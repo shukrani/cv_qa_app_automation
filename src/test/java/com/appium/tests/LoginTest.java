@@ -17,8 +17,8 @@ public class LoginTest extends UserBaseTest {
 	UserCredentials credentials;
 	WelcomePage welcomePage;
 
-	@Test(groups = "smoke")
-	@Author(name = "Sai")
+	// @Test(groups = "smoke")
+
 	public void loginWithValidUser() throws InterruptedException {
 		loginPage = new LoginPage(driver);
 		credentials = new UserCredentials("chhaganlal.mathuriya@craftsvilla.com", "B9d3Dk");

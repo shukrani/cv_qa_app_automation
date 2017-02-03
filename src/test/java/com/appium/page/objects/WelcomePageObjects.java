@@ -52,4 +52,7 @@ public class WelcomePageObjects {
 	@AndroidFindBy(id = "com.craftsvilla.app:id/mBottomNavigationProfileLayout")
 	public MobileElement MY_ACCOUNT;
 
+	@AndroidFindBy(id = "com.craftsvilla.app:id/mLinearLayoutItemGrid")
+	public MobileElement CATEGORY_SAREE;
+
 }

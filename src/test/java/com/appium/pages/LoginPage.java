@@ -47,7 +47,7 @@ public class LoginPage extends CommonAppiumTest {
 	public void enterPassword(String password) {
 		// TODO Auto-generated method stub
 
-		//waitForPageToLoad(loginPageObjects.email);
+		// waitForPageToLoad(loginPageObjects.email);
 		PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
 		waitForPageToLoad(loginPageObjects.password);
 		logStepIntoExtentReport(getPageObjectElemetDescription(loginPageObjects, "password"), "SendKeys", password);
@@ -66,10 +66,8 @@ public class LoginPage extends CommonAppiumTest {
 		loginPageObjects.login.click();
 	}
 
-	public void enterSiteURL() {
-		// TODO Auto-generated method stub
-		loginPageObjects.add_self_site.click();
-		loginPageObjects.server_url.sendKeys("https://vodqademo.wordpress.com");
+	public void skip() {
+		waitForElement(loginPageObjects.skip).click();
 	}
 
 }
