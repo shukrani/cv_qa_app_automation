@@ -83,6 +83,7 @@ public class WelcomePage extends CommonAppiumTest {
 
 	public CategoryPage moveToCategory() {
 		waitForElement(welcomePageObjects.CATEGORY_SAREE).click();
+		waitForElementToDisAppear("com.craftsvilla.app:id/mLinearLayoutItemGrid");
 
 		return new CategoryPage(driver);
 	}

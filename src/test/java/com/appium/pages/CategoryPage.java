@@ -1,6 +1,5 @@
 package com.appium.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
 import com.appium.config.CommonAppiumTest;
@@ -32,15 +31,23 @@ public class CategoryPage extends CommonAppiumTest {
 
 	public void moveToSubCategoryPage() {
 		waitForElement(categoryPageObjects.SUB_CATEGORY_GEORGETTE).click();
+		waitForElementToDisAppear("com.craftsvilla.app:id/defaultSlider");
 	}
 
 	public ProductPage moveToProductPage() {
-		int trycount = 0;
-		while (!isElementPresent(By.id("com.craftsvilla.app:id/categoryItemLayoutGridView"))
-				|| !waitForElement(categoryPageObjects.PRODUCT_LIST).isDisplayed() && trycount++ < 5) {
+		PageFactory.initElements(new AppiumFieldDecorator(driver), categoryPageObjects);
 
+		for (MobileElement e : categoryPageObjects.PRODUCT_LIST) {
+			waitForElement(e);
+			if (e.isDisplayed()) {
+				e.tap(1, 2);
+				waitForElementToDisAppear("com.craftsvilla.app:id/categoryItemLayoutGridView");
+				if (!isElementDisplayed(e))
+					break;
+			}
 		}
-		waitForElement(categoryPageObjects.PRODUCT_LIST).click();
+		// waitForElementToDisAppear("com.craftsvilla.app:id/defaultSlider");
+
 		return new ProductPage(driver);
 
 	}

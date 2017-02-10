@@ -34,6 +34,17 @@ public class ProductPage extends CommonAppiumTest {
 
 	}
 
+	public boolean isCODAvailable() {
+
+		try {
+			
+			return waitForElement(productPageObjects.COD_AVAILABLE).isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+
+	}
+
 	public int getCartCount() {
 
 		int count = 0;

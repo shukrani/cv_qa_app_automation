@@ -8,6 +8,8 @@ import com.appium.page.objects.LoginPageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
 @PageName("Login Page")
@@ -48,8 +50,15 @@ public class LoginPage extends CommonAppiumTest {
 		// TODO Auto-generated method stub
 
 		// waitForPageToLoad(loginPageObjects.email);
+
 		PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
 		waitForPageToLoad(loginPageObjects.password);
+		if (!isElementDisplayed(loginPageObjects.password)) {
+
+			PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
+			waitForPageToLoad(loginPageObjects.password);
+		}
+
 		logStepIntoExtentReport(getPageObjectElemetDescription(loginPageObjects, "password"), "SendKeys", password);
 		loginPageObjects.password.clear();
 		loginPageObjects.password.sendKeys(password);
@@ -61,8 +70,10 @@ public class LoginPage extends CommonAppiumTest {
 	}
 
 	public void login() {
-		waitForPageToLoad(loginPageObjects.login);
+
 		PageFactory.initElements(new AppiumFieldDecorator(driver), loginPageObjects);
+		if (!isElementDisplayed(loginPageObjects.login))
+			hideKeyBoard();
 		loginPageObjects.login.click();
 	}
 

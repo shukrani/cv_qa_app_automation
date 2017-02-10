@@ -32,18 +32,12 @@ public class LoginPageObjects {
 	@SelendroidFindBy(id = "nux_add_selfhosted_button")
 	public MobileElement add_self_site;
 
-	@CacheLookup
 	@AndroidFindBy(id = "com.craftsvilla.app:id/mButtonStartInstantlyOnboarding")
-	@iOSFindBy(id = "Sign In")
-	@SelendroidFindBy(id = "nux_sign_in_button")
-	@FindBy(id = "wp-submit")
+
 	public MobileElement getStarted;
 
-	@CacheLookup
 	@AndroidFindBy(id = "com.craftsvilla.app:id/mButtonLogin")
-	@iOSFindBy(id = "Sign In")
-	@SelendroidFindBy(id = "nux_sign_in_button")
-	@FindBy(id = "wp-submit")
+
 	public MobileElement login;
 
 	@AndroidFindBy(id = "com.craftsvilla.app:id/mTextViewSkipOnboarding")

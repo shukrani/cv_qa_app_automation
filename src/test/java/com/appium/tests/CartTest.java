@@ -20,9 +20,10 @@ public class CartTest extends UserBaseTest {
 	CategoryPage categoryPage;
 	ProductPage productPage;
 
-	//@Test(groups = "smoke")
+	// @Test(groups = "smoke")
 
 	public void addToCartWithLogin() throws InterruptedException {
+
 		loginPage = new LoginPage(driver);
 		credentials = new UserCredentials("chhaganlal.mathuriya@craftsvilla.com", "B9d3Dk");
 		loginPage.enterUserEmail(credentials.getUserName());
@@ -41,7 +42,7 @@ public class CartTest extends UserBaseTest {
 
 	}
 
-	@Test(groups = "smoke")
+	// @Test(groups = "smoke")
 	public void addToCartWithoutLogin() throws InterruptedException {
 		loginPage = new LoginPage(driver);
 		loginPage.skip();

@@ -16,4 +16,7 @@ public class ProductPageObjects {
 
 	@AndroidFindBy(id = "com.craftsvilla.app:id/mTextViewCartCount")
 	public MobileElement CART_COUNT;
+
+	@AndroidFindBy(id = "com.craftsvilla.app:id/mAvailableCODTextView")
+	public MobileElement COD_AVAILABLE;
 }
