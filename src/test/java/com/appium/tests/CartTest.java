@@ -20,7 +20,7 @@ public class CartTest extends UserBaseTest {
 	CategoryPage categoryPage;
 	ProductPage productPage;
 
-	@Test(groups = "smoke", alwaysRun = true)
+	//@Test(groups = "smoke", alwaysRun = true)
 
 	public void addToCartWithLogin() throws InterruptedException {
 

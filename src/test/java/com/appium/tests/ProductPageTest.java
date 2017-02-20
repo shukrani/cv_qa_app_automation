@@ -22,7 +22,7 @@ public class ProductPageTest extends UserBaseTest {
 	ProductPage productPage;
 	MyCartPage cartPage;
 
-	@Test(groups = "smoke")
+//	@Test(groups = "smoke")
 
 	public void codAvailableWithLogin() throws InterruptedException {
 
@@ -42,7 +42,7 @@ public class ProductPageTest extends UserBaseTest {
 
 	}
 
-	@Test(groups = "smoke")
+//	@Test(groups = "smoke")
 	public void codAvailableWithoutLogin() throws InterruptedException {
 		loginPage = new LoginPage(driver);
 		loginPage.skip();

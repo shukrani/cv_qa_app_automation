@@ -56,6 +56,24 @@ public class MyCartPage extends CommonAppiumTest {
 		}
 	}
 
+	public void proceedToPaymentGuest(AppiumDriver<MobileElement> driver) {
+		try {
+			PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
+			cartPageObjects.guestEmail.sendKeys("cl" + System.currentTimeMillis() + "@mailinator.com");
+			cartPageObjects.guestProceed.click();
+			if (isElementDisplayed(cartPageObjects.guestProceed)) {
+
+				cartPageObjects.guestProceed.click();
+				guestAddAddress();
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
 	public void placeOrder(AppiumDriver<MobileElement> driver) {
 		try {
 			PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
@@ -78,6 +96,27 @@ public class MyCartPage extends CommonAppiumTest {
 
 			return false;
 		}
+	}
+
+	public void removeItems(AppiumDriver<MobileElement> driver) {
+		for (MobileElement e : cartPageObjects.removeOptions) {
+			if (e.isDisplayed()) {
+				e.click();
+				PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
+				if (isElementDisplayed(cartPageObjects.removeButton)) {
+					cartPageObjects.removeButton.click();
+				}
+			}
+		}
+
+	}
+
+	public void guestAddAddress() {
+		PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
+		cartPageObjects.pincode.sendKeys("400093");
+		cartPageObjects.firstName.sendKeys("test");
+		cartPageObjects.lastName.sendKeys("user");
+
 	}
 
 }

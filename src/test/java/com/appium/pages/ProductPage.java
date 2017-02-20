@@ -26,6 +26,11 @@ public class ProductPage extends CommonAppiumTest {
 
 	public void addToCart() {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), productPageObjects);
+		if (isElementDisplayed(waitForElement(productPageObjects.ADD_TO_CART_BUTTON))
+				&& waitForElement(productPageObjects.ADD_TO_CART_BUTTON).getText().toLowerCase().equals("go to cart")) {
+			goToCartAndRemoveItems();
+
+		}
 		waitForElement(productPageObjects.ADD_TO_CART_BUTTON).click();
 
 	}
@@ -65,6 +70,15 @@ public class ProductPage extends CommonAppiumTest {
 		} finally {
 			return count;
 		}
+	}
+
+	public void goToCartAndRemoveItems() {
+		productPageObjects.ADD_TO_CART_BUTTON.click();
+		MyCartPage cartPage = new MyCartPage(driver);
+		cartPage.removeItems(driver);
+		driver.navigate().back();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), productPageObjects);
+
 	}
 
 }

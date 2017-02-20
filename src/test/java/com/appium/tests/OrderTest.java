@@ -22,7 +22,7 @@ public class OrderTest extends UserBaseTest {
 	ProductPage productPage;
 	MyCartPage cartPage;
 
-	@Test(groups = "smoke", alwaysRun = true)
+	//@Test(groups = "smoke", alwaysRun = true)
 
 	public void codWithLogin() throws InterruptedException {
 
@@ -50,7 +50,7 @@ public class OrderTest extends UserBaseTest {
 	}
 
 	@Test(groups = "smoke", alwaysRun = true)
-	public void buyNowWithoutLogin() throws InterruptedException {
+	public void codWithoutLogin() throws InterruptedException {
 		loginPage = new LoginPage(driver);
 		loginPage.skip();
 		welcomePage = new WelcomePage(driver);
