@@ -17,7 +17,7 @@ public class LoginTest extends UserBaseTest {
 	UserCredentials credentials;
 	WelcomePage welcomePage;
 
-	//@Test(groups = "smoke")
+	@Test(groups = "smoke")
 
 	public void loginWithValidUser() throws InterruptedException {
 		loginPage = new LoginPage(driver);

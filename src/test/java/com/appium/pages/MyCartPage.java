@@ -25,9 +25,57 @@ public class MyCartPage extends CommonAppiumTest {
 
 	public boolean isCartPage(AppiumDriver<MobileElement> driver) {
 		try {
+			PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
 			return cartPageObjects.checkout.isDisplayed();
 
 		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public void proceedToCheckout(AppiumDriver<MobileElement> driver) {
+		try {
+
+			cartPageObjects.checkout.click();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
+	public void proceedToPayment(AppiumDriver<MobileElement> driver) {
+		try {
+			PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
+			cartPageObjects.proceedToPayment.click();
+			waitForElementToDisAppear(cartPageObjects.proceedToPayment);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
+	public void placeOrder(AppiumDriver<MobileElement> driver) {
+		try {
+			PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
+			waitForElement(cartPageObjects.placeOrder).click();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
+	public boolean verifyOrder(AppiumDriver<MobileElement> driver) {
+		try {
+			PageFactory.initElements(new AppiumFieldDecorator(driver), cartPageObjects);
+
+			return !isElementDisplayed(cartPageObjects.placeOrder);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
 			return false;
 		}
 	}

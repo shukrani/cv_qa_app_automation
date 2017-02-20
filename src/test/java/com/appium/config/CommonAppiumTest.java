@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -42,6 +44,20 @@ public class CommonAppiumTest {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(id)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void waitForElementToDisAppear(final WebElement id) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(new ExpectedCondition<Boolean>() {
+				public Boolean apply(WebDriver arg0) {
+
+					return !id.isDisplayed();
+				}
+			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

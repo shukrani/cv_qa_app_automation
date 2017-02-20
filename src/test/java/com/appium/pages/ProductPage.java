@@ -25,11 +25,13 @@ public class ProductPage extends CommonAppiumTest {
 	}
 
 	public void addToCart() {
+		PageFactory.initElements(new AppiumFieldDecorator(driver), productPageObjects);
 		waitForElement(productPageObjects.ADD_TO_CART_BUTTON).click();
 
 	}
 
 	public void buyNow() {
+		PageFactory.initElements(new AppiumFieldDecorator(driver), productPageObjects);
 		waitForElement(productPageObjects.BUY_NOW_BUTTON).click();
 
 	}
@@ -37,7 +39,7 @@ public class ProductPage extends CommonAppiumTest {
 	public boolean isCODAvailable() {
 
 		try {
-			
+
 			return waitForElement(productPageObjects.COD_AVAILABLE).isDisplayed();
 		} catch (Exception e) {
 			return false;

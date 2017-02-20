@@ -20,7 +20,7 @@ public class CartTest extends UserBaseTest {
 	CategoryPage categoryPage;
 	ProductPage productPage;
 
-	// @Test(groups = "smoke")
+	@Test(groups = "smoke", alwaysRun = true)
 
 	public void addToCartWithLogin() throws InterruptedException {
 
@@ -42,7 +42,7 @@ public class CartTest extends UserBaseTest {
 
 	}
 
-	// @Test(groups = "smoke")
+	@Test(groups = "smoke", alwaysRun = true)
 	public void addToCartWithoutLogin() throws InterruptedException {
 		loginPage = new LoginPage(driver);
 		loginPage.skip();
